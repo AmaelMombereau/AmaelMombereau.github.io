@@ -2,101 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Amaël Mombereau – Quantitative Research & Machine Learning</title>
+  <title>Amaël Mombereau – Biophysics, Machine Learning & Quantitative Research</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Amaël Mombereau – PhD in Biophysics | Computational Biology & Data Science | Machine Learning & Quantitative Research.">
+  <meta name="description" content="Portfolio of Amaël Mombereau – PhD in Biophysics | Computational Biology & Data Science | Machine Learning & Quantitative Research." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #020617;
-      --bg-alt: #020617;
-      --panel: #020617;
-      --panel-soft: #020617;
       --accent: #38bdf8;
-      --accent-soft: rgba(56,189,248,0.18);
-      --accent-strong: #0ea5e9;
+      --accent-2: #a855f7;
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
-      --border-subtle: rgba(148,163,184,0.25);
-      --error: #f97373;
+      --border-subtle: rgba(148,163,184,0.28);
       --radius-lg: 18px;
-      --shadow-soft: 0 24px 70px rgba(15,23,42,0.95);
+      --shadow-soft: 0 24px 80px rgba(15,23,42,0.9);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, #1e293b 0, transparent 55%),
-        radial-gradient(circle at 80% 20%, #0f172a 0, transparent 60%),
-        radial-gradient(circle at center, #020617 0, #020617 70%);
+        radial-gradient(circle at top left, #020617 0, #020617 40%, #020617 100%),
+        radial-gradient(circle at 120% -10%, #0f172a 0, transparent 55%),
+        #020617;
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.6;
       scroll-behavior: smooth;
     }
     img { max-width: 100%; display: block; }
-
     a { color: inherit; text-decoration: none; }
     ul { list-style: none; }
 
-    /* ====== LAYOUT / NAV ====== */
+    /* ====== GLOBAL LAYOUT ====== */
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2.6rem 1.6rem 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+    }
 
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      backdrop-filter: blur(20px);
-      background: linear-gradient(to right, rgba(15,23,42,0.92), rgba(15,23,42,0.7));
-      border-bottom: 1px solid rgba(148,163,184,0.25);
-    }
-    .nav-inner {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0.6rem 1.3rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      align-items: baseline;
+      gap: 1rem;
     }
-    .logo {
+
+    .brand {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.55rem;
       font-family: "Space Grotesk", system-ui, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
     }
-    .logo-badge {
-      width: 28px;
-      height: 28px;
+    .brand-mark {
+      width: 26px;
+      height: 26px;
       border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, #e0f2fe, #0ea5e9, #1e293b);
+      background: radial-gradient(circle at 25% 0, #e0f2fe, #0ea5e9, #1e293b);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #020617;
+      box-shadow: 0 12px 30px rgba(8,47,73,0.7);
     }
+
     nav ul {
       display: flex;
-      gap: 1.3rem;
-      font-size: 0.9rem;
+      flex-wrap: wrap;
+      gap: 1.1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
     }
     nav a {
-      padding-bottom: 0.18rem;
       position: relative;
-      color: var(--text-muted);
+      padding-bottom: 0.15rem;
     }
     nav a::after {
       content: "";
       position: absolute;
-      left: 0; bottom: 0;
-      width: 0; height: 2px;
-      background: var(--accent);
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--accent), var(--accent-2));
       transition: width 0.2s ease;
     }
     nav a:hover {
@@ -106,21 +107,204 @@
       width: 100%;
     }
 
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 5.5rem 1.3rem 3rem;
+    /* ====== PROFILE CARD ====== */
+
+    .profile-section {
+      display: flex;
+      justify-content: center;
     }
 
-    section {
-      padding: 4rem 0 0;
+    .profile-card {
+      width: 100%;
+      max-width: 700px;
+      background:
+        radial-gradient(circle at 0 0, rgba(56,189,248,0.25), transparent 55%),
+        radial-gradient(circle at 100% 0, rgba(168,85,247,0.18), transparent 55%),
+        #020617;
+      border-radius: 26px;
+      padding: 2rem 1.9rem 1.7rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,184,0.5);
     }
+
+    .profile-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .avatar {
+      width: 200px;
+      height: 200px;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 2px solid rgba(241,245,249,0.92);
+      box-shadow: 0 20px 52px rgba(15,23,42,0.9);
+    }
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .profile-name {
+      text-align: center;
+    }
+    .profile-name h1 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+    .profile-name p {
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .profile-highlight {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      padding: 0.8rem 0.9rem;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.45);
+      background: rgba(15,23,42,0.96);
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-info {
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .profile-info span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .profile-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .pill-links {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .pill-links a {
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.78rem;
+    }
+    .pill-links a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ====== HERO ====== */
+
+    .hero-kicker {
+      text-align: center;
+      font-size: 0.76rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-title {
+      text-align: center;
+      font-family: "Space Grotesk", system-ui, sans-serif;
+      font-size: clamp(2.1rem, 3.3vw, 2.7rem);
+      line-height: 1.08;
+      margin-bottom: 0.9rem;
+    }
+    .hero-title span {
+      background: linear-gradient(to right, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 1.2rem auto;
+      text-align: center;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem 1.1rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.6rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+      background: rgba(15,23,42,0.92);
+      color: var(--text-main);
+    }
+    .btn-primary {
+      background: radial-gradient(circle at 15% 0, #e0f2fe, var(--accent), #0f172a);
+      border-color: var(--accent);
+      color: #020617;
+      font-weight: 600;
+      box-shadow: 0 16px 44px rgba(8,47,73,0.65);
+    }
+    .btn-outline {
+      background: transparent;
+    }
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 48px rgba(15,23,42,0.9);
+      border-color: var(--accent);
+    }
+
+    /* ====== SECTIONS GÉNÉRALES ====== */
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    .section {
+      border-top: 1px solid rgba(15,23,42,0.95);
+      padding-top: 1.6rem;
+    }
+
     .section-header {
       display: flex;
-      align-items: baseline;
       justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.8rem;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 1.4rem;
     }
     .section-kicker {
       font-size: 0.75rem;
@@ -130,463 +314,253 @@
       margin-bottom: 0.25rem;
     }
     .section-title {
-      font-size: clamp(1.6rem, 2vw, 1.9rem);
+      font-size: 1.25rem;
       font-weight: 600;
     }
     .section-subtitle {
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
-      max-width: 460px;
+      max-width: 360px;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
-      gap: 2.2rem;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.15rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: rgba(15,23,42,0.85);
-      font-size: 0.75rem;
+    .about-text p {
+      font-size: 0.95rem;
       color: var(--text-muted);
-    }
-
-    /* ====== HERO ====== */
-
-    #hero {
-      padding-top: 3.5rem;
-    }
-
-    .hero-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 3.2fr) minmax(0, 2.3fr);
-      gap: 2.4rem;
-      align-items: center;
-    }
-    .hero-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.7rem;
-    }
-    .hero-title {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: clamp(2.2rem, 4vw, 2.8rem);
-      line-height: 1.1;
-      margin-bottom: 0.8rem;
-    }
-    .hero-title span {
-      background: linear-gradient(to right, #38bdf8, #a855f7);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .hero-tagline {
-      font-size: 0.98rem;
-      color: var(--text-muted);
-      max-width: 560px;
-      margin-bottom: 1.4rem;
-    }
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 1.4rem;
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-    .hero-meta span {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.9rem;
-      align-items: center;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.45rem;
-      padding: 0.55rem 1.3rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: transparent;
-      color: var(--text-main);
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background 0.16s ease;
-    }
-    .btn-primary {
-      background: radial-gradient(circle at 20% 0, #e0f2fe, #38bdf8, #0f172a);
-      border-color: #38bdf8;
-      color: #020617;
-      font-weight: 600;
-      box-shadow: 0 14px 40px rgba(8,47,73,0.7);
-    }
-    .btn-ghost {
-      background: rgba(15,23,42,0.8);
-    }
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 45px rgba(15,23,42,0.9);
-      border-color: var(--accent);
-    }
-    .btn-primary:hover {
-      background: radial-gradient(circle at 20% 0, #f0f9ff, #38bdf8, #0f172a);
-    }
-
-    .hero-right {
-    position: relative;
-    justify-self: center;
-    width: 100%;
-    max-width: 380px; /* un peu plus large qu'avant */
-    }
-
-    /* carte de droite un peu plus simple, plus aérée */
-    .hero-card {
-    position: relative;
-    padding: 1.8rem 1.6rem 1.6rem;
-    border-radius: 26px;
-    background: radial-gradient(circle at 0 0, rgba(56,189,248,0.18), transparent 55%),
-                radial-gradient(circle at 100% 100%, rgba(129,140,248,0.12), transparent 55%),
-                #020617;
-    box-shadow: var(--shadow-soft);
-    border: 1px solid rgba(148,163,184,0.5);
-    overflow: hidden;
-    }
-
-    /* on garde l’orbite mais plus discrète */
-    .hero-orbit {
-    position: absolute;
-    inset: -40%;
-    background:
-        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.18), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.18), transparent 55%);
-    opacity: 0.35;
-    filter: blur(10px);
-    z-index: -1;
-    animation: orbit 22s linear infinite alternate;
-    }
-
-    /* layout vertical : grosse photo en haut, texte dessous */
-    .hero-profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-    }
-
-    /* AVATAR GROS ET ROND */
-  
-
-    .hero-profile h1 {
-    font-size: 1.15rem;
-    margin-bottom: 0.15rem;
-    text-align: center;
-    }
-    .hero-role {
-    font-size: 0.84rem;
-    color: var(--text-muted);
-    text-align: center;
-    }
-
-    .hero-contact {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.35rem;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    }
-
-    .hero-footer {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.5rem;
-    align-items: center;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    }
-    .hero-footer span {
-    text-align: right;
-    }
-
-    .hero-orbit {
-      position: absolute;
-      inset: -40%;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(56,189,248,0.25), transparent 55%),
-        radial-gradient(circle at 100% 100%, rgba(129,140,248,0.25), transparent 55%);
-      opacity: 0.3;
-      filter: blur(6px);
-      z-index: -1;
-      animation: orbit 18s linear infinite alternate;
-    }
-    @keyframes orbit {
-      from { transform: translate3d(-10px, -10px, 0) rotate(0deg); }
-      to { transform: translate3d(10px, 10px, 0) rotate(5deg); }
-    }
-
-    .hero-profile {
-      display: grid;
-      grid-template-columns: auto minmax(0, 1fr);
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 1.1rem;
-    }
-    .hero-avatar {
-      width: 88px;
-      height: 88px;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: radial-gradient(circle at 30% 20%, #e5e7eb, #0f172a);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      font-weight: 600;
-    }
-    .hero-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        }
-    .hero-profile h1 {
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-    .hero-role {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-    }
-
-    .hero-highlight {
-      font-size: 0.82rem;
-      padding: 0.6rem 0.75rem;
-      border-radius: 14px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(56,189,248,0.35);
-      margin-bottom: 0.8rem;
-    }
-
-    .hero-contact {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-      gap: 0.4rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .hero-contact span {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-footer {
-      margin-top: 0.85rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-    }
-    .hero-social {
-      display: flex;
-      gap: 0.4rem;
-    }
-    .hero-social a {
-      padding: 0.15rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      font-size: 0.75rem;
-    }
-    .hero-social a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    /* ====== ABOUT ====== */
-
-    .about-text {
-      font-size: 0.96rem;
-      color: var(--text-muted);
-      max-width: 640px;
+      max-width: 680px;
     }
     .about-text p + p {
       margin-top: 0.9rem;
     }
 
-    .pill-row {
+    .chips-row {
+      margin-top: 1.1rem;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
-    .pill {
+    .chip {
+      font-size: 0.78rem;
+      padding: 0.18rem 0.7rem;
       border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.5);
-      padding: 0.25rem 0.7rem;
+      color: var(--text-muted);
+      background: rgba(15,23,42,0.85);
+    }
+
+    /* ====== NOW ====== */
+
+    .now-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 1rem;
+    }
+    .now-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at 0 0, rgba(56,189,248,0.16), transparent 60%),
+                  rgba(15,23,42,0.96);
+      padding: 0.9rem 1rem;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+    }
+    .now-card h3 {
+      font-size: 0.92rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    /* ====== EXPERIENCE EN BLOCS ====== */
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .exp-card {
+      border-radius: 22px;
+      padding: 1.5rem 1.6rem;
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,0.16), transparent 55%),
+        rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.4);
+      box-shadow: 0 18px 50px rgba(15,23,42,0.85);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .exp-title {
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .exp-subtitle {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .exp-item + .exp-item {
+      margin-top: 1.2rem;
+    }
+
+    .exp-date {
       font-size: 0.78rem;
       color: var(--text-muted);
-      background: rgba(15,23,42,0.8);
     }
 
-    /* ====== EXPERIENCE / TIMELINE ====== */
-
-    .timeline {
-      position: relative;
-      margin-top: 0.5rem;
-      padding-left: 1.3rem;
-    }
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 0.2rem;
-      top: 0.2rem;
-      bottom: 0.2rem;
-      width: 1px;
-      background: linear-gradient(to bottom, rgba(148,163,184,0.6), transparent);
-    }
-    .timeline-item {
-      position: relative;
-      margin-bottom: 1.7rem;
-      padding-left: 0.8rem;
-    }
-    .timeline-dot {
-      position: absolute;
-      left: -1.45rem;
-      top: 0.2rem;
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      border: 2px solid var(--accent);
-      background: var(--bg);
-    }
-    .timeline-title {
-      font-size: 0.98rem;
+    .exp-role {
+      font-size: 0.94rem;
       font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
     }
-    .timeline-meta {
-      font-size: 0.8rem;
+
+    .exp-item ul {
+      margin-left: 1.2rem;
       color: var(--text-muted);
-      margin-bottom: 0.25rem;
-    }
-    .timeline-body {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .timeline-body ul {
-      margin-top: 0.25rem;
-      padding-left: 1rem;
       list-style: disc;
     }
-    .timeline-body li + li {
-      margin-top: 0.1rem;
+    .exp-item li + li {
+      margin-top: 0.15rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    .tag {
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.8);
+      color: var(--text-muted);
+      border: 1px solid rgba(148,163,184,0.35);
+      font-size: 0.78rem;
+    }
+
+    .exp-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    /* ====== ANIMATIONS ====== */
+
+    /* slide-in base state */
+    .slide-left,
+    .slide-right {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    .slide-left {
+      transform: translateX(-35px);
+    }
+    .slide-right {
+      transform: translateX(35px);
+    }
+    .animate-left {
+      animation: slideLeft 0.7s ease forwards;
+    }
+    .animate-right {
+      animation: slideRight 0.7s ease forwards;
+    }
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(-35px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(35px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* fade-up base state */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .animate-up {
+      animation: fadeUp 0.7s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ====== SKILLS ====== */
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
     }
-    .card {
+    .skill-card {
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top, rgba(15,23,42,0.3), rgba(15,23,42,0.96));
       border: 1px solid var(--border-subtle);
-      padding: 1rem 1rem;
-      box-shadow: 0 18px 55px rgba(15,23,42,0.9);
-      position: relative;
-      overflow: hidden;
-    }
-    .card::after {
-      content: "";
-      position: absolute;
-      inset: -40%;
-      background: radial-gradient(circle at 10% 0, rgba(56,189,248,0.12), transparent 55%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .card:hover::after {
-      opacity: 1;
-    }
-    .card h3 {
-      font-size: 0.92rem;
-      margin-bottom: 0.4rem;
-    }
-    .card small {
-      font-size: 0.76rem;
+      background: rgba(15,23,42,0.96);
+      padding: 0.9rem 1rem;
+      box-shadow: 0 16px 40px rgba(15,23,42,0.9);
+      font-size: 0.86rem;
       color: var(--text-muted);
     }
-    .tag-list {
-      margin-top: 0.7rem;
+    .skill-card h3 {
+      font-size: 0.9rem;
+      margin-bottom: 0.35rem;
+      color: var(--text-main);
+    }
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 0.35rem;
+      margin-top: 0.4rem;
     }
-    .tag {
+    .tags .tag {
       font-size: 0.76rem;
-      padding: 0.18rem 0.55rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
-      color: var(--text-muted);
+      padding: 0.16rem 0.6rem;
     }
 
     /* ====== PROJECTS ====== */
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
     }
     .project-card {
       border-radius: var(--radius-lg);
-      background: radial-gradient(circle at top right, rgba(56,189,248,0.18), rgba(15,23,42,0.98));
-      border: 1px solid rgba(148,163,184,0.45);
-      padding: 1rem;
+      border: 1px solid rgba(148,163,184,0.5);
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,0.16), transparent 60%),
+        rgba(15,23,42,0.98);
+      padding: 0.95rem 1rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      box-shadow: 0 16px 44px rgba(15,23,42,0.9);
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
-      position: relative;
-      overflow: hidden;
+      gap: 0.45rem;
     }
     .project-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
+      font-size: 0.72rem;
       letter-spacing: 0.16em;
+      text-transform: uppercase;
       color: var(--accent);
     }
     .project-title {
       font-size: 0.96rem;
       font-weight: 600;
-    }
-    .project-meta {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-    .project-desc {
-      font-size: 0.84rem;
-      color: var(--text-muted);
+      color: var(--text-main);
     }
     .project-footer {
-      margin-top: 0.7rem;
+      margin-top: 0.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.5rem;
       font-size: 0.78rem;
     }
     .project-tech {
@@ -596,11 +570,11 @@
     }
     .project-tech span {
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
+      border: 1px solid rgba(148,163,184,0.45);
       padding: 0.15rem 0.55rem;
     }
     .project-link {
-      opacity: 0.8;
+      opacity: 0.85;
     }
     .project-link:hover {
       opacity: 1;
@@ -609,14 +583,13 @@
 
     /* ====== CONTACT ====== */
 
-    .contact-layout {
+    .contact-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2.7fr) minmax(0, 2.3fr);
-      gap: 2rem;
-      align-items: start;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 1.5rem;
     }
     .contact-text p {
-      font-size: 0.94rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
     }
     .contact-text p + p {
@@ -625,12 +598,13 @@
 
     form {
       display: grid;
-      gap: 0.7rem;
+      gap: 0.65rem;
+      font-size: 0.84rem;
     }
     label {
       font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 0.15rem;
+      margin-bottom: 0.1rem;
       display: block;
     }
     input, textarea {
@@ -638,9 +612,9 @@
       padding: 0.55rem 0.7rem;
       border-radius: 10px;
       border: 1px solid rgba(148,163,184,0.4);
-      background: rgba(15,23,42,0.94);
+      background: rgba(15,23,42,0.96);
       color: var(--text-main);
-      font: inherit;
+      font-family: inherit;
       font-size: 0.86rem;
       resize: vertical;
     }
@@ -651,297 +625,269 @@
     }
 
     footer {
-      padding: 3rem 1.3rem 1.2rem;
-      text-align: center;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2.2rem 1.6rem 1.2rem;
       font-size: 0.8rem;
       color: var(--text-muted);
-    }
-
-    /* ====== REVEAL ANIMATIONS ====== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+      text-align: center;
     }
 
     /* ====== RESPONSIVE ====== */
 
-    @media (max-width: 900px) {
-      .hero-layout,
-      .grid-2,
-      .contact-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
-      .hero-right {
-        order: -1;
-      }
-      .hero-layout {
-        text-align: left;
-      }
-      .hero-card {
-        max-width: 360px;
-        margin: 0 auto;
-      }
-    }
-
-    @media (max-width: 768px) {
+    @media (max-width: 780px) {
       header {
-        position: sticky;
-      }
-      main {
-        padding-top: 1.8rem;
-      }
-      .nav-inner {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
+        gap: 0.7rem;
       }
       nav ul {
-        gap: 0.9rem;
-        font-size: 0.82rem;
         flex-wrap: wrap;
       }
-
-      .skills-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .projects-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 540px) {
+      .now-grid,
+      .exp-grid,
       .skills-grid,
-      .projects-grid {
+      .projects-grid,
+      .contact-grid {
         grid-template-columns: minmax(0, 1fr);
       }
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
+      .exp-card {
+        animation-delay: 0s !important;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="nav-inner">
-      <div class="logo">
-        <div class="logo-badge">AM</div>
-        <span>Amaël&nbsp;Mombereau</span>
+  <div class="page" id="top">
+    <header class="fade-up">
+      <div class="brand">
+        <div class="brand-mark">AM</div>
+        <span>AMAËL&nbsp;MOMBEREAU</span>
       </div>
       <nav>
         <ul>
-          <li><a href="#hero">Intro</a></li>
+          <li><a href="#top">Intro</a></li>
           <li><a href="#about">About</a></li>
+          <li><a href="#now">Now</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main>
+    <!-- PROFILE CARD -->
+    <section class="profile-section">
+      <div class="profile-card fade-up">
+        <div class="profile-top">
+          <div class="avatar">
+            <!-- ta photo dans /images/amael.jpg -->
+            <img src="images/amael.jpg" alt="Amaël Mombereau">
+          </div>
+          <div class="profile-name">
+            <h1>Amaël Mombereau</h1>
+            <p>PhD in Biophysics · Computational Biology &amp; Data Science · Machine Learning</p>
+          </div>
+        </div>
+
+        <div class="profile-highlight">
+          Currently developing non-invasive ECG imaging and machine-learning tools at IHU Liryc,
+          while building systematic trading models and exploring quantitative research roles.
+        </div>
+
+        <div class="profile-info">
+          <span>📍 Bordeaux, France</span>
+          <span>🎓 PhD in Physics – University of Bordeaux (LP2N)</span>
+          <span>✉️ <a href="mailto:mombereauamael@gmail.com">mombereauamael@gmail.com</a></span>
+          <span>📱 <a href="tel:+33781655221">+33 7 81 65 52 21</a></span>
+        </div>
+
+        <div class="profile-footer">
+          <div class="pill-links">
+            <a href="https://github.com/AmaelMombereau" target="_blank" rel="noopener">GitHub</a>
+            <!-- remplace # par ton vrai LinkedIn -->
+            <a href="https://www.linkedin.com/in/ama%C3%ABl-mombereau-0b1ba3110/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+          <span>Open to quantitative research &amp; systematic trading roles.</span>
+        </div>
+      </div>
+    </section>
+
     <!-- HERO -->
-    <section id="hero">
-      <div class="hero-layout reveal">
-        <div>
-          <div class="hero-eyebrow">Biophysics • Machine Learning • Quantitative Research</div>
-          <h1 class="hero-title">
-            Modeling complex systems<br />
-            to build <span>data-driven trading & research</span>.
-          </h1>
-          <p class="hero-tagline">
-            I am a postdoctoral researcher in biophysics and AI, with a PhD in Physics and hands-on
-            experience in computational modeling, biomedical signal processing, and algorithmic trading.
-            I am now transitioning into quantitative research and systematic trading.
-          </p>
-          <div class="hero-meta">
-            <span>📍 Bordeaux, France</span>
-            <span>🎓 PhD in Biophysics – University of Bordeaux</span>
-            <span>⚙️ Python • ML • Time-series • Quantitative modeling</span>
-          </div>
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">View scientific & AI projects ↓</a>
-            <a href="#contact" class="btn btn-ghost">Get in touch</a>
-          </div>
-        </div>
-
-        <div class="hero-right">
-            <div class="hero-card">
-                <div class="hero-orbit"></div>
-
-                <div class="hero-profile">
-                <div class="hero-avatar">
-                    <img src="images/amael.jpg" alt="Amaël Mombereau">
-                </div>
-                <div>
-                    <h1>Amaël Mombereau</h1>
-                    <div class="hero-role">
-                    PhD in Biophysics • Computational Biology &amp; Data Science • Machine Learning
-                    </div>
-                </div>
-                </div>
-
-                <!-- on ne garde ici que les infos de contact -->
-                <div class="hero-contact">
-                <span>📧 <a href="mailto:mombereauamael@gmail.com">mombereauamael@gmail.com</a></span>
-                <span>📱 <a href="tel:+33781655221">+33 7 81 65 52 21</a></span>
-                <span>📌 88 Boulevard Maréchal Leclerc, 33000 Bordeaux</span>
-                </div>
-
-                <div class="hero-footer">
-                <div class="hero-social">
-                    <a href="https://github.com/AmaelMombereau" target="_blank" rel="noopener">GitHub</a>
-                    <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-                </div>
-                <span>Open to roles in quantitative research &amp; systematic trading.</span>
-                </div>
-            </div>
-        </div>
+    <section>
+      <div class="hero-kicker fade-up">BIOPHYSICS • MACHINE LEARNING • QUANTITATIVE RESEARCH</div>
+      <h2 class="hero-title fade-up">
+        Modeling complex systems<br>
+        to build <span>data-driven trading &amp; research</span>.
+      </h2>
+      <p class="hero-text fade-up">
+        I am a postdoctoral researcher in biophysics and AI, with a PhD in Physics and experience in
+        computational modeling, biomedical signal processing, and algorithmic trading. I am now
+        transitioning into quantitative research and systematic trading.
+      </p>
+      <div class="hero-meta fade-up">
+        <span>📌 Bordeaux, France</span>
+        <span>🎓 PhD in Biophysics – University of Bordeaux</span>
+        <span>⚙️ Python · ML · Time-series · Quantitative modeling</span>
+      </div>
+      <div class="hero-actions fade-up">
+        <a href="#projects" class="btn btn-primary">View scientific &amp; AI projects ↓</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
       </div>
     </section>
 
     <!-- ABOUT -->
-    <section id="about">
-      <div class="section-header reveal">
+    <section id="about" class="section">
+      <div class="section-header fade-up">
         <div>
           <div class="section-kicker">About</div>
-          <h2 class="section-title">From biophysics to systematic trading</h2>
+          <h3 class="section-title">From biophysics to systematic trading</h3>
         </div>
         <p class="section-subtitle">
-          A strong background in physics, computational biology, and AI, now focused on applying
-          modeling, statistics, and machine learning to financial markets and quantitative research.
+          An interdisciplinary background combining experimental physics, computational biology
+          and applied machine learning – now focused on quantitative finance.
         </p>
       </div>
 
-      <div class="grid-2">
-        <div class="about-text reveal">
+      <div class="about-text fade-up">
+        <p>
+          During my PhD in biophysics at the University of Bordeaux, I studied how mechanical
+          forces shape stem-cell differentiation using microfluidic systems, advanced microscopy
+          and mathematical modeling. This work required high-dimensional data analysis,
+          statistical inference and robust simulations.
+        </p>
+        <p>
+          I then completed a certified AI and Data Science program at CentraleSupélec &amp;
+          OpenClassrooms, and I am currently a postdoctoral researcher at IHU Liryc, where I
+          develop machine-learning-based ECG imaging methods and deep learning algorithms for
+          patient-specific electrode localization.
+        </p>
+        <p>
+          Since 2019, I have been actively studying financial markets and designing algorithmic
+          trading strategies, experimenting with reinforcement learning, FinRL frameworks and
+          LLM-guided information processing. I now seek to bring this experience to a
+          quantitative research team.
+        </p>
+      </div>
+
+      <div class="chips-row fade-up">
+        <span class="chip">Data-driven modeling</span>
+        <span class="chip">Machine learning &amp; deep learning</span>
+        <span class="chip">Time-series &amp; signal processing</span>
+        <span class="chip">Scientific rigor &amp; experimentation</span>
+        <span class="chip">Algorithmic trading</span>
+      </div>
+    </section>
+
+    <!-- NOW -->
+    <section id="now" class="section">
+      <div class="section-header fade-up">
+        <div>
+          <div class="section-kicker">Currently</div>
+          <h3 class="section-title">What I’m working on now</h3>
+        </div>
+        <p class="section-subtitle">
+          A snapshot of my ongoing work in biomedical ML and systematic trading.
+        </p>
+      </div>
+
+      <div class="now-grid">
+        <div class="now-card slide-left">
+          <h3>Non-invasive ECG imaging @ IHU Liryc</h3>
           <p>
-            During my PhD in biophysics at the University of Bordeaux, I studied how mechanical forces
-            shape stem-cell differentiation using microfluidic systems, advanced microscopy, and
-            mathematical modeling. This work required high-dimensional data analysis, statistical
-            inference and robust simulations.
-          </p>
-          <p>
-            I then completed a certified AI and Data Science program at CentraleSupélec &amp; OpenClassrooms,
-            and I am currently a postdoctoral researcher at IHU Liryc, where I develop machine-learning-based ECG
-            imaging methods and deep learning algorithms for patient-specific electrode localization.
-          </p>
-          <p>
-            Since 2019, I have been actively studying financial markets and designing algorithmic trading
-            strategies, experimenting with reinforcement learning, FinRL frameworks and LLM-guided
-            information processing. I now seek to bring this interdisciplinary experience to a
-            quantitative research team.
+            Developing ML-based ECG imaging pipelines to detect and localize arrhythmogenic
+            substrates from non-invasive measurements, including deep learning models for
+            patient-specific electrode localization and epicardial potential reconstruction.
           </p>
         </div>
-        <div class="reveal">
-          <div class="chip" style="margin-bottom:0.7rem;">Core strengths</div>
-          <div class="pill-row" style="margin-bottom:1.1rem;">
-            <span class="pill">Data-driven modeling</span>
-            <span class="pill">Machine learning &amp; deep learning</span>
-            <span class="pill">Time-series &amp; signal processing</span>
-            <span class="pill">Scientific rigor &amp; experimentation</span>
-            <span class="pill">Interdisciplinary collaboration</span>
-            <span class="pill">Algorithmic trading</span>
-          </div>
-          <div class="chip" style="margin-bottom:0.5rem;">Looking for</div>
-          <p style="font-size:0.9rem;color:var(--text-muted);">
-            Quantitative Research • Systematic / Algorithmic Trading • ML Research for Finance •
-            Data-driven Portfolio Modeling.
+        <div class="now-card slide-right">
+          <h3>Systematic trading &amp; quantitative research</h3>
+          <p>
+            Designing and backtesting equity strategies using reinforcement learning frameworks
+            and LLM-assisted information processing, maintaining a virtual portfolio since 2022
+            and actively exploring roles in quantitative research and systematic trading.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
-      <div class="section-header reveal">
+    <!-- EXPERIENCE (BLOCS) -->
+    <section id="experience" class="section">
+      <div class="section-header fade-up">
         <div>
           <div class="section-kicker">Experience</div>
-          <h2 class="section-title">Scientific & AI-driven research</h2>
+          <h3 class="section-title">Scientific &amp; AI-driven research</h3>
         </div>
         <p class="section-subtitle">
-          A trajectory combining experimental physics, computational modeling and applied machine learning
-          on real-world, high-stakes data.
+          A trajectory combining experimental physics, computational modeling and applied
+          machine learning on real-world, high-stakes data.
         </p>
       </div>
 
-      <div class="grid-2">
-        <div class="timeline reveal">
-          <article class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-meta">2023 – present · Bordeaux · IHU Liryc</div>
-            <h3 class="timeline-title">Postdoctoral Researcher – ECGI</h3>
-            <div class="timeline-body">
-              <ul>
-                <li>Design of epicardial potential measurement systems and ex-vivo heart studies.</li>
-                <li>Development of ML-based ECG imaging and deep learning algorithms for electrode localization.</li>
-                <li>Non-invasive detection and localization of arrhythmogenic substrates.</li>
-                <li>Awarded the ANCRE Prize; involvement in laboratory &amp; communication committees.</li>
-              </ul>
-            </div>
-          </article>
+      <div class="exp-grid">
+        <!-- LEFT : EXPERIENCE LIST -->
+        <div class="exp-card slide-left" style="animation-delay:0.05s;">
+          <h4 class="exp-title">Experience</h4>
 
-          <article class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-meta">2022 – 2023 · CentraleSupélec & OpenClassrooms</div>
-            <h3 class="timeline-title">AI Engineer Projects</h3>
-            <div class="timeline-body">
-              <ul>
-                <li>Automatic classification of consumer goods.</li>
-                <li>Prediction of building energy consumption.</li>
-                <li>Tag suggestion API for large-scale text data.</li>
-                <li>Image-based biomarker prediction and genetic disorder classification.</li>
-                <li>Deep hybrid modeling of cell culture dynamics.</li>
-              </ul>
-            </div>
-          </article>
+          <div class="exp-item">
+            <div class="exp-date">2023 – present · IHU Liryc</div>
+            <div class="exp-role">Postdoctoral Researcher – ECGI</div>
+            <ul>
+              <li>Design of epicardial potential measurement systems and ex-vivo heart studies.</li>
+              <li>ML-based ECG imaging and deep learning for electrode localization.</li>
+              <li>Non-invasive detection and mapping of arrhythmogenic substrates.</li>
+              <li>Awarded the ANCRE Prize; active involvement in laboratory &amp; communication committees.</li>
+            </ul>
+          </div>
 
-          <article class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-meta">2017 – 2022 · LP2N, University of Bordeaux</div>
-            <h3 class="timeline-title">PhD in Biophysics – Mechanotransduction in stem cells</h3>
-            <div class="timeline-body">
-              <ul>
-                <li>Developed microfluidic encapsulation systems for adipose-derived stem cells.</li>
-                <li>Built mathematical and physical models for cell dynamics under mechanical forces.</li>
-                <li>Automated 2D/3D microscopy image processing and quantitative analysis.</li>
-                <li>Polymer fabrication, surface treatment, and experimental design.</li>
-              </ul>
-            </div>
-          </article>
+          <div class="exp-item">
+            <div class="exp-date">2022 – 2023 · CentraleSupélec &amp; OpenClassrooms</div>
+            <div class="exp-role">AI Engineer Projects</div>
+            <ul>
+              <li>Automatic classification of consumer goods.</li>
+              <li>Prediction of building energy consumption.</li>
+              <li>Large-scale tag recommendation API.</li>
+              <li>Medical imaging biomarker prediction and genetic disorder classification.</li>
+              <li>Hybrid ML modeling of cell culture dynamics.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date">2017 – 2022 · LP2N, University of Bordeaux</div>
+            <div class="exp-role">PhD in Biophysics – Mechanotransduction</div>
+            <ul>
+              <li>Microfluidic encapsulation systems for adipose-derived stem cells.</li>
+              <li>Mathematical and physical models of cell dynamics under mechanical forces.</li>
+              <li>Automated 2D/3D microscopy image processing and quantitative analysis.</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="reveal">
-          <div class="card">
-            <h3>Education</h3>
-            <small>Academic path in physics, lasers, and AI.</small>
-            <div class="tag-list" style="margin-top:0.8rem;">
+        <!-- RIGHT COLUMN: EDUCATION, LANGUAGES, OUTSIDE OF WORK -->
+        <div class="exp-stack">
+          <div class="exp-card slide-right" style="animation-delay:0.1s;">
+            <h4 class="exp-title">Education</h4>
+            <p class="exp-subtitle">Academic path in physics, lasers, and AI.</p>
+            <div class="tag-list">
               <span class="tag">2022–2023 · AI Engineer – CentraleSupélec &amp; OpenClassrooms</span>
               <span class="tag">2017–2022 · PhD in Physics – University of Bordeaux (LP2N)</span>
               <span class="tag">2015–2017 · Master in Laser Physics, Materials &amp; Nanosciences</span>
             </div>
           </div>
 
-          <div class="card" style="margin-top:1rem;">
-            <h3>Languages</h3>
-            <div class="tag-list" style="margin-top:0.6rem;">
+          <div class="exp-card slide-right" style="margin-top:1rem;animation-delay:0.18s;">
+            <h4 class="exp-title">Languages</h4>
+            <div class="tag-list">
               <span class="tag">French – Native</span>
               <span class="tag">English – Professional</span>
             </div>
           </div>
 
-          <div class="card" style="margin-top:1rem;">
-            <h3>Outside of work</h3>
-            <small>What keeps me curious and creative.</small>
-            <div class="tag-list" style="margin-top:0.7rem;">
+          <div class="exp-card slide-right" style="margin-top:1rem;animation-delay:0.25s;">
+            <h4 class="exp-title">Outside of work</h4>
+            <p class="exp-subtitle">What keeps me curious and creative.</p>
+            <div class="tag-list">
               <span class="tag">Climbing</span>
               <span class="tag">Programming side-projects</span>
               <span class="tag">3D printing</span>
@@ -953,23 +899,23 @@
     </section>
 
     <!-- SKILLS -->
-    <section id="skills">
-      <div class="section-header reveal">
+    <section id="skills" class="section">
+      <div class="section-header fade-up">
         <div>
           <div class="section-kicker">Skills</div>
-          <h2 class="section-title">From physics & biology to AI & quant</h2>
+          <h3 class="section-title">From physics &amp; biology to AI &amp; quant</h3>
         </div>
         <p class="section-subtitle">
-          A strong programming toolkit, modern ML frameworks, and engineering experience spanning
-          optics, microfluidics, and biomedical signal processing.
+          Programming, ML frameworks and scientific expertise used to tackle complex,
+          data-driven problems.
         </p>
       </div>
 
-      <div class="skills-grid reveal">
-        <div class="card">
+      <div class="skills-grid">
+        <div class="skill-card slide-left">
           <h3>Programming</h3>
-          <small>Daily-driver: Python.</small>
-          <div class="tag-list">
+          <p>Daily-driver: Python, with strong scientific computing background.</p>
+          <div class="tags">
             <span class="tag">Python</span>
             <span class="tag">C++</span>
             <span class="tag">R</span>
@@ -978,11 +924,10 @@
             <span class="tag">Bash</span>
           </div>
         </div>
-
-        <div class="card">
-          <h3>ML &amp; Data Science</h3>
-          <small>End-to-end modeling and analysis.</small>
-          <div class="tag-list">
+        <div class="skill-card slide-right">
+          <h3>Machine Learning &amp; Data Science</h3>
+          <p>End-to-end modeling from preprocessing to deployment.</p>
+          <div class="tags">
             <span class="tag">Scikit-learn</span>
             <span class="tag">TensorFlow</span>
             <span class="tag">Keras</span>
@@ -992,11 +937,10 @@
             <span class="tag">NLTK</span>
           </div>
         </div>
-
-        <div class="card">
+        <div class="skill-card slide-left">
           <h3>Quant &amp; Engineering Tools</h3>
-          <small>Bridging ML, APIs and deployment.</small>
-          <div class="tag-list">
+          <p>Bridging quantitative models, APIs and infrastructure.</p>
+          <div class="tags">
             <span class="tag">QuantLib</span>
             <span class="tag">Backtrader</span>
             <span class="tag">FinRL (experiments)</span>
@@ -1007,137 +951,90 @@
             <span class="tag">Git &amp; GitHub</span>
           </div>
         </div>
-
-        <div class="card">
+        <div class="skill-card slide-right">
           <h3>Physics &amp; Biophysics</h3>
-          <small>Experimental &amp; theoretical.</small>
-          <div class="tag-list">
-            <span class="tag">Optics &amp; Lasers</span>
-            <span class="tag">Statistical Physics</span>
+          <p>Experimental and theoretical background.</p>
+          <div class="tags">
+            <span class="tag">Optics &amp; lasers</span>
+            <span class="tag">Statistical physics</span>
             <span class="tag">Microfluidics</span>
-            <span class="tag">Polymer Physics</span>
-            <span class="tag">Signal Processing</span>
+            <span class="tag">Polymer physics</span>
+            <span class="tag">Signal processing</span>
             <span class="tag">Bioinformatics</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Soft skills</h3>
-          <small>Shaped by research &amp; collaboration.</small>
-          <div class="tag-list">
-            <span class="tag">Scientific rigor</span>
-            <span class="tag">Creativity</span>
-            <span class="tag">Team spirit</span>
-            <span class="tag">Autonomy</span>
-            <span class="tag">Communication</span>
           </div>
         </div>
       </div>
     </section>
 
     <!-- PROJECTS -->
-    <section id="projects">
-      <div class="section-header reveal">
+    <section id="projects" class="section">
+      <div class="section-header fade-up">
         <div>
-          <div class="section-kicker">Scientific & Quant Portfolio</div>
-          <h2 class="section-title">Selected projects</h2>
+          <div class="section-kicker">Scientific &amp; Quant Portfolio</div>
+          <h3 class="section-title">Selected projects</h3>
         </div>
         <p class="section-subtitle">
-          A mix of biomedical ML, computational biology and algorithmic trading experiments,
-          illustrating how I approach complex, data-driven problems.
+          A mix of biomedical ML, computational biology and algorithmic trading experiments.
         </p>
       </div>
 
-      <div class="projects-grid reveal">
-        <article class="project-card">
-          <div class="project-label">Quant & Systematic Trading</div>
-          <h3 class="project-title">Reinforcement-learning-based equity strategy</h3>
-          <p class="project-meta">Personal project · 2019–ongoing</p>
-          <p class="project-desc">
-            Design and backtesting of equity strategies using FinRL-style reinforcement learning frameworks,
-            combined with LLM-based information filtering to refine signal generation and risk-aware decision-making.
+      <div class="projects-grid">
+        <article class="project-card slide-left">
+          <div class="project-label">Quant &amp; Systematic Trading</div>
+          <h4 class="project-title">Reinforcement-learning-based equity strategy</h4>
+          <p>
+            Design and backtesting of equity strategies using FinRL-style reinforcement learning
+            frameworks combined with LLM-based information filtering for risk-aware decision-making.
             Deployed on a virtual portfolio since 2022 with consistently positive performance.
           </p>
           <div class="project-footer">
             <div class="project-tech">
-              <span>Python</span>
-              <span>FinRL</span>
-              <span>RL</span>
-              <span>Pandas</span>
+              <span>Python</span><span>FinRL</span><span>RL</span><span>Pandas</span>
             </div>
             <a class="project-link" href="https://github.com/AmaelMombereau" target="_blank" rel="noopener">
-              View code on GitHub →
-            </a>
+              View code on GitHub →</a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card slide-right">
           <div class="project-label">Biomedical ML</div>
-          <h3 class="project-title">ECG imaging & arrhythmia substrate mapping</h3>
-          <p class="project-meta">IHU Liryc · 2023–present</p>
-          <p class="project-desc">
-            Development of ML-driven ECG imaging pipelines to reconstruct epicardial potentials and
-            localize arrhythmogenic substrates from non-invasive measurements, with deep learning
-            models for patient-specific electrode localization.
+          <h4 class="project-title">ECG imaging &amp; arrhythmia substrate mapping</h4>
+          <p>
+            ML-driven ECG imaging pipelines reconstructing epicardial potentials and localizing
+            arrhythmogenic substrates from non-invasive measurements, with deep learning models
+            for patient-specific electrode localization.
           </p>
           <div class="project-footer">
             <div class="project-tech">
-              <span>Python</span>
-              <span>PyTorch</span>
-              <span>Signal processing</span>
-              <span>Medical data</span>
+              <span>Python</span><span>PyTorch</span><span>Signal processing</span><span>Medical data</span>
             </div>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card slide-left">
           <div class="project-label">Computer Vision</div>
-          <h3 class="project-title">Image-based biomarker prediction</h3>
-          <p class="project-meta">AI Engineer Program · 2022–2023</p>
-          <p class="project-desc">
-            Built deep-learning pipelines for image classification and biomarker prediction, including
-            training, evaluation, and deployment-ready code with experiment tracking and standardized preprocessing.
+          <h4 class="project-title">Image-based biomarker prediction</h4>
+          <p>
+            Deep learning pipelines for image classification and biomarker prediction, including
+            training, evaluation and deployment-ready code.
           </p>
           <div class="project-footer">
             <div class="project-tech">
-              <span>TensorFlow</span>
-              <span>Keras</span>
-              <span>Computer vision</span>
+              <span>TensorFlow</span><span>Keras</span><span>Computer vision</span>
             </div>
           </div>
         </article>
 
-        <article class="project-card">
-          <div class="project-label">NLP & APIs</div>
-          <h3 class="project-title">Tag suggestion API for text streams</h3>
-          <p class="project-meta">AI Engineer Program · 2022–2023</p>
-          <p class="project-desc">
-            Designed an end-to-end tag recommendation system for textual data, exposing a FastAPI backend
-            that delivers real-time tag suggestions for incoming content streams.
+        <article class="project-card slide-right">
+          <div class="project-label">NLP &amp; APIs</div>
+          <h4 class="project-title">Tag suggestion API for text streams</h4>
+          <p>
+            End-to-end tag recommendation system for textual data, exposed via a FastAPI backend
+            that serves real-time tag suggestions.
           </p>
           <div class="project-footer">
             <div class="project-tech">
-              <span>Python</span>
-              <span>FastAPI</span>
-              <span>NLTK</span>
-              <span>ML</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card">
-          <div class="project-label">Computational Biology</div>
-          <h3 class="project-title">Hybrid modeling of cell culture dynamics</h3>
-          <p class="project-meta">PhD & AI projects</p>
-          <p class="project-desc">
-            Combined mechanistic models and data-driven components to describe stem-cell dynamics in
-            microfluidic environments, integrating microscopy data, image analysis and statistical modeling.
-          </p>
-          <div class="project-footer">
-            <div class="project-tech">
-              <span>Python</span>
-              <span>Image analysis</span>
-              <span>Hybrid models</span>
+              <span>Python</span><span>FastAPI</span><span>NLTK</span><span>ML</span>
             </div>
           </div>
         </article>
@@ -1145,27 +1042,28 @@
     </section>
 
     <!-- CONTACT -->
-    <section id="contact">
-      <div class="section-header reveal">
+    <section id="contact" class="section">
+      <div class="section-header fade-up">
         <div>
           <div class="section-kicker">Contact</div>
-          <h2 class="section-title">Let’s talk about research & quant</h2>
+          <h3 class="section-title">Let’s talk about research &amp; quant</h3>
         </div>
         <p class="section-subtitle">
-          I’m open to discussing quantitative research roles, collaborations at the intersection of
-          ML and finance, and scientific partnerships.
+          Open to quantitative research roles, collaborations at the intersection of ML and
+          finance, and scientific partnerships.
         </p>
       </div>
 
-      <div class="contact-layout">
-        <div class="contact-text reveal">
+      <div class="contact-grid">
+        <div class="contact-text slide-left">
           <p>
-            If you are looking for someone who combines a rigorous scientific background with hands-on
-            machine learning and a genuine interest in financial markets, feel free to reach out.
+            If you are looking for someone who combines a rigorous scientific background with
+            hands-on machine learning and a genuine interest in financial markets, feel free
+            to reach out.
           </p>
           <p>
-            The easiest way to contact me is by email, but you can also connect on LinkedIn or explore
-            my technical work on GitHub.
+            The easiest way to contact me is by email, but you can also connect on LinkedIn or
+            explore my technical work on GitHub.
           </p>
           <p style="margin-top:0.8rem;">
             <strong>Email:</strong> <a href="mailto:mombereauamael@gmail.com">mombereauamael@gmail.com</a><br>
@@ -1173,61 +1071,70 @@
             <strong>GitHub:</strong> <a href="https://github.com/AmaelMombereau" target="_blank" rel="noopener">AmaelMombereau</a>
           </p>
         </div>
-
-        <div class="reveal">
+        <div class="slide-right">
           <form onsubmit="event.preventDefault(); alert('This is a static portfolio. To contact me, please use the email address provided.');">
             <div>
               <label for="name">Name</label>
-              <input id="name" type="text" name="name" placeholder="Your name" required>
+              <input id="name" name="name" type="text" placeholder="Your name" required>
             </div>
             <div>
               <label for="email-contact">Email</label>
-              <input id="email-contact" type="email" name="email" placeholder="you@example.com" required>
+              <input id="email-contact" name="email" type="email" placeholder="you@example.com" required>
             </div>
             <div>
               <label for="message">Message</label>
               <textarea id="message" name="message" placeholder="How could we work together?" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.3rem;">
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:0.2rem;">
               Send message (via email)
             </button>
           </form>
         </div>
       </div>
     </section>
-  </main>
+  </div>
 
-  <footer>
+  <footer class="fade-up">
     © <span id="year"></span> Amaël Mombereau — Biophysics • Machine Learning • Quantitative Research.
   </footer>
 
   <script>
-    // Smooth scroll for internal links
+    // smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener("click", function (e) {
-        const targetId = this.getAttribute("href").substring(1);
-        const target = document.getElementById(targetId);
+        const id = this.getAttribute("href").substring(1);
+        const target = document.getElementById(id) || document.getElementById("top");
         if (!target) return;
         e.preventDefault();
-        const offset = 70;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        const rect = target.getBoundingClientRect();
+        const top = rect.top + window.scrollY - 20;
         window.scrollTo({ top, behavior: "smooth" });
       });
     });
 
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
+    // reveal on scroll: slide + fade
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+
+        if (el.classList.contains("slide-left")) {
+          el.classList.add("animate-left");
+        } else if (el.classList.contains("slide-right")) {
+          el.classList.add("animate-right");
+        } else if (el.classList.contains("fade-up")) {
+          el.classList.add("animate-up");
         }
+
+        revealObserver.unobserve(el);
       });
     }, { threshold: 0.15 });
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.querySelectorAll(".slide-left, .slide-right, .fade-up").forEach(el => {
+      revealObserver.observe(el);
+    });
 
-    // Dynamic year
+    // année dynamique
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
