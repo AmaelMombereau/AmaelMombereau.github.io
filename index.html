@@ -582,6 +582,63 @@
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
+    /* ====== QUANTITATIVE TRADING ====== */
+
+    .quant-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+        gap: 1.6rem;
+        align-items: center;
+    }
+
+    .quant-text p {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        text-align: justify;
+    }
+
+    .quant-text p + p {
+        margin-top: 0.9rem;
+    }
+
+    .quant-image-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .quant-image-inner {
+        border-radius: 22px;
+        overflow: hidden;
+        border: 1px solid rgba(148,163,184,0.4);
+        box-shadow: 0 18px 48px rgba(15,23,42,0.95);
+        background: radial-gradient(circle at top right, rgba(56,189,248,0.18), rgba(15,23,42,0.98));
+    }
+
+    .quant-image-inner img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.6s ease;
+    }
+
+    .quant-image-inner:hover img {
+        transform: scale(1.03);
+    }
+
+    .quant-caption {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        opacity: 0.8;
+    }
+
+    /* Responsive */
+    @media (max-width: 780px) {
+        .quant-grid {
+            grid-template-columns: minmax(0, 1fr);
+        }
+    }
+
 
     /* ====== SKILLS ====== */
 
@@ -746,6 +803,78 @@
         animation-delay: 0s !important;
       }
     }
+    /* Lightbox fullscreen image */
+    .lightbox-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox-bg.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      animation: zoomIn 0.25s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+
+    .quant-img-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .quant-img {
+      width: 100%;
+      max-width: 900px;
+      border-radius: 16px;
+      border: 1px solid rgba(148,163,184,0.4);
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      box-shadow: 0 10px 40px rgba(15,23,42,0.8);
+    }
+
+    .quant-img:hover {
+      transform: scale(1.01);
+      opacity: 0.95;
+      box-shadow: 0 14px 60px rgba(15,23,42,0.95);
+    }
+
+    /* Close button */
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      z-index: 10000;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    .lightbox-close:hover {
+      opacity: 1;
+    }
+
   </style>
 </head>
 
@@ -762,6 +891,7 @@
           <li><a href="#about">About</a></li>
           <li><a href="#now">Now</a></li>
           <li><a href="#experience">Experience</a></li>
+          <li><a href="#quant">Quant</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -915,7 +1045,6 @@
           <div class="section-kicker">Experience</div>
           <h3 class="section-title">Scientific &amp; AI-driven research</h3>
         </div>
-
       </div>
 
       <div class="exp-grid">
@@ -927,10 +1056,21 @@
             <div class="exp-date">2023 – present · IHU Liryc</div>
             <div class="exp-role">Postdoctoral Researcher – ECGI</div>
             <ul>
-              <li>Design of epicardial potential measurement systems and ex-vivo heart studies.</li>
-              <li>ML-based ECG imaging and deep learning for electrode localization.</li>
-              <li>Non-invasive detection and mapping of arrhythmogenic substrates.</li>
-              <li>Awarded the ANCRE Prize; active involvement in laboratory &amp; communication committees.</li>
+              <li>Development of a non-invasive method for detecting and localizing arrhythmogenic substrates on the heart.</li>
+              <li>Machine learning–based ECG imaging development and validation.</li>
+              <li>Deep learning algorithm for patient-specific electrode localization.</li>
+              <li>Postdoctoral representative in laboratory and committees (IHU/CHU).</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-date">2022 – present · Independent Quantitative Trading</div>
+            <div class="exp-role">Quantitative Trader</div>
+            <ul>
+              <li>Development of algorithmic trading strategies for retail investors.</li>
+              <li>Backtesting of equities, ETFs, and crypto strategies using Python.</li>
+              <li>Virtual account portfolio management since 2022.</li>
+              <li>Implementation of risk-management rules (drawdown, volatility targeting).</li>
             </ul>
           </div>
 
@@ -939,23 +1079,22 @@
             <div class="exp-role">AI Engineer Projects</div>
             <ul>
               <li>Automatic classification of consumer goods.</li>
-              <li>Prediction of building energy consumption.</li>
-              <li>Large-scale tag recommendation API.</li>
-              <li>Medical imaging biomarker prediction and genetic disorder classification.</li>
-              <li>Hybrid ML modeling of cell culture dynamics.</li>
+              <li>Image classification / biomarker prediction / genetic disorder classification.</li>
+              <li>Deep hybrid modeling of cell culture dynamics.</li>
             </ul>
           </div>
 
           <div class="exp-item">
             <div class="exp-date">2017 – 2022 · LP2N, University of Bordeaux</div>
-            <div class="exp-role">PhD in Biophysics – Mechanotransduction</div>
+            <div class="exp-role">PhD in Biophysics</div>
             <ul>
-              <li>Microfluidic encapsulation systems for adipose-derived stem cells.</li>
-              <li>Mathematical and physical models of cell dynamics under mechanical forces.</li>
-              <li>Automated 2D/3D microscopy image processing and quantitative analysis.</li>
+              <li>Determination and characterization of mechanotransduction in adipose-derived stem cells.</li>
+              <li>Development of microfluidic systems (cell encapsulation systems).</li>
+              <li>Applied mathematical and physical modeling to predict cell dynamics.</li>
+              <li>Automated image processing and analysis for 2D/3D microscopy.</li>
             </ul>
           </div>
-        </div>
+        </div> 
 
         <!-- RIGHT COLUMN: EDUCATION, LANGUAGES, OUTSIDE OF WORK -->
         <div class="exp-stack">
@@ -966,6 +1105,7 @@
               <span class="tag">2022–2023 · AI Engineer – CentraleSupélec &amp; OpenClassrooms</span>
               <span class="tag">2017–2022 · PhD in Physics – University of Bordeaux (LP2N)</span>
               <span class="tag">2015–2017 · Master in Laser Physics, Materials &amp; Nanosciences</span>
+              <span class="tag">2024–2025 · Quantitative Modeling &amp; Financial Risk Management – UPenn &amp; Columbia</span>
             </div>
           </div>
 
@@ -990,6 +1130,58 @@
         </div>
       </div>
     </section>
+
+    <!-- QUANTITATIVE TRADING -->
+    <section id="quant" class="section">
+        <div class="section-header fade-up">
+            <div>
+                <div class="section-kicker">Quantitative trading</div>
+                <h3 class="section-title">Systematic & data-driven strategies</h3>
+            </div>
+        </div>
+
+        <div class="quant-grid">
+            
+            <!-- TEXTE -->
+            <div class="quant-text slide-left">
+                <p>
+                    Since 2019, I have been actively studying financial markets and designing
+                    systematic trading strategies on equities. My work focuses on data-driven approaches
+                    combining signal processing, factor models, reinforcement learning agents,
+                    and robust portfolio construction.
+                </p>
+
+                <p>
+                    I develop full end-to-end pipelines: feature engineering, model training,
+                    backtesting on multi-year datasets, risk analysis, and stress-testing under
+                    different market regimes. Models include trend-following, mean-reversion,
+                    probabilistic forecasting and RL-based position sizing.
+                </p>
+
+                <div class="chips-row" style="margin-top:1rem;">
+                    <span class="chip">Reinforcement learning</span>
+                    <span class="chip">Backtesting & risk analysis</span>
+                    <span class="chip">Equity Long/Short</span>
+                    <span class="chip">Portfolio optimization</span>
+                    <span class="chip">Signal engineering</span>
+                </div>
+            </div>
+
+            <!-- IMAGE -->
+            <div class="quant-image-wrapper slide-right">
+                <div class="quant-image-inner">
+                    <img class="quant-img" src="images/trades_algo.png" alt="Quantitative trading strategy performance">
+                </div>
+                <p class="quant-caption">
+                    Backtest example of a systematic equity strategy with technical signals, 
+                    trade points, equity curve and normalized comparison.
+                </p>
+            </div>
+
+
+        </div>
+    </section>
+
 
     <!-- SKILLS -->
     <section id="skills" class="section">
@@ -1182,6 +1374,10 @@
   <footer class="fade-up">
     © <span id="year"></span> Amaël Mombereau — Biophysics • Machine Learning • Quantitative Research.
   </footer>
+  <div id="lightbox" class="lightbox-bg">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="">
+  </div>
 
   <script>
     // smooth scroll
@@ -1221,6 +1417,27 @@
 
     // année dynamique
     document.getElementById("year").textContent = new Date().getFullYear();
+    // Lightbox for quant trading image
+    const quantImg = document.querySelector(".quant-img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const closeBtn = document.querySelector(".lightbox-close");
+
+    quantImg.addEventListener("click", () => {
+      lightboxImg.src = quantImg.src;
+      lightbox.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      lightbox.classList.remove("active");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("active");
+      }
+    });
   </script>
+  
 </body>
 </html>
